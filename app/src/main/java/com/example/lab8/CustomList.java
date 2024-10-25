@@ -54,8 +54,8 @@ public class CustomList extends ArrayAdapter<City> {
     }
 
     public boolean hasCity(City city) {
-        for (City existingCities : cities) {
-            if (city.equals(city)) {
+        for (City existingCity : cities) {
+            if (existingCity.equals(city)) {
                 return true;
             }
         }
@@ -63,6 +63,10 @@ public class CustomList extends ArrayAdapter<City> {
     }
 
     public void delete(City city) {
-
+        if (this.hasCity(city)) {
+            cities.remove(city);
+        } else {
+            throw new IllegalArgumentException("argument object must exist in the list");
+        }
     }
 }
